@@ -277,8 +277,6 @@ pjt04
 - 미디어 쿼리를 통한 반응형 웹 구현
 
   ```css
-  }
-  
   @media screen and (min-width: 576px) {
     .card-box {
       flex-direction: row;
@@ -321,7 +319,7 @@ pjt04
 - 메인 페이지에서 보이는 내용과 카드 크기를 통일 시킴으로써 유저에게 보이는 시각적인 불편함을 줄임
 
 <div align="center">
-  <img src="README.assets/스크린샷 2022-03-04 21.40.17.png" alt="main" width="500px"/>
+  <img src="README.assets/main.png" alt="main" width="500px"/>
 </div>
 
 
