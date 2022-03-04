@@ -14,9 +14,9 @@
     <title>Document</title>
   </head>
   <body>
-    <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">SSAFY</a>
+        <a class="navbar-brand" href="#">SSAFY MOVIE</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -48,8 +48,11 @@
       </div>
     </nav>
     {% block navbar %}{% endblock navbar %}
-    <footer class="fixed-bottom bg-primary text-center">
-      여기는 푸터입니다. <button><a href="#1">탑버튼</a></button>
+    <footer class="footer">
+      <p>SSAFY</p>
+      <div class="top">
+        <a href="#top"> <p>^</p> </a>
+      </div>
     </footer>
     {% block footer %}{% endblock footer %}
     <script

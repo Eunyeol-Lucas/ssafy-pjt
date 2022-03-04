@@ -1,3 +1,31 @@
+.movie-title {
+  margin-bottom: 0;
+  padding: 0;
+}
+.image-container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.fig-sentence {
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.main-image {
+  width: 100%;
+  filter: blur(1px);
+}
+
 .overview {
   white-space: normal;
   display: -webkit-box;
@@ -5,4 +33,112 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   height: 100px;
+}
+
+.footer {
+  height: 50px;
+  padding-left: 10%;
+  padding-right: 10%;
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(27, 27, 27);
+  width: 100%;
+  justify-content: space-between;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.top {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+a:link {
+  color: black;
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.card-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 250px;
+  border: 1px solid rgb(238, 235, 235);
+  border-radius: 5px;
+  box-shadow: 0 6px 12px -2px rgba(50, 50, 93, 0.25),
+    0 3px 7px -3px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  display: flex;
+}
+
+.vote-container {
+  background-color: green;
+  color: white;
+  width: 50px;
+  text-align: center;
+  border-radius: 5px;
+
+  margin-left: 10px;
+}
+
+.img-container {
+  width: 250px;
+  margin-bottom: 0;
+}
+
+.info {
+  width: 100%;
+  padding: 10px;
+}
+
+.image {
+  width: 250px;
+  height: 100%;
+}
+
+article {
+  margin: 0 auto 20px auto;
+}
+
+@media screen and (min-width: 576px) {
+  .card-box {
+    flex-direction: row;
+    width: 500px;
+  }
+  .fig-sentence {
+    font-size: 50px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .card-box {
+    flex-direction: row;
+    width: 800px;
+  }
+}
+
+@media screen and (min-width: 1452px) {
+  .image-container {
+    width: 1400px;
+  }
 }
