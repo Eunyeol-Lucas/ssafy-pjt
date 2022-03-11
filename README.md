@@ -179,29 +179,62 @@ https://beomi.github.io/gb-crawling/posts/2017-03-01-HowToMakeWebCrawler-Save-wi
 
 - index.html에는 적절한 HTML 요소를 사용하여 영화 제목 및 평점을 표시하며, [자세히 보기] 버턴을 클릭 시 해당 영화의 상세 조회 페이지로 이동
 
-  ![스크린샷 2022-03-11 17.43.51](README.assets/스크린샷 2022-03-11 17.43.51.png)
+- <div align="center">
+    <img src="README.assets/1.png" alt="main" width="800px"/>
+  </div>
+
+  
 
 ### 5. 영화 상세 정보 페이지 (detail.html)
 
 - 모든 사이트를 반응형에 맞추어 구현
+
 - 특정 영화의 상세 정보를 표시
+
 - 해당 영화의 수정 및 삭제 버튼을 표시
+
 - [LOGO]를 클릭할 경우 index.html로 이동
+
 - [EDIT] 버튼을 클릭할 경우 편집 페이지로 이동
+
 - [DELETE] 버튼을 클릭할 경우 해당 게시물이 삭제
-- ![스크린샷 2022-03-11 17.44.23](README.assets/스크린샷 2022-03-11 17.44.23.png)
+
+  <div align="center">
+    <img src="README.assets/2.png" alt="main" width="800px"/>
+  </div>
+
+  
 
 ### 6. 영화 작성 페이지 (new.html)
 
 - 영화 작성 Form을 표시
+
 - Form에 작성한 정보는 제출(submit)시, 영화 데이터를 저장하는 URL로 요청과 함께 전송
+
 - [LOGO]를 클릭할 경우 index.html로 이동
-- ![스크린샷 2022-03-11 17.47.03](README.assets/스크린샷 2022-03-11 17.47.03.png)
+
+  <div align="center">
+    <img src="README.assets/3.png" alt="main" width="800px"/>
+  </div>
+
+  
 
 ### 7. 영화 수정 페이지 (edit.html)
 
 - 영화 수정 Form을 표시
+
 - Form에는 기존 영화 데이터를 출력
+
 - Form에 작성한 정보는 제출(submit)시, 영화 데이터를 수정하는 URL로 요청과 함께 전송
+
 - [LOGO]를 클릭할 경우 index.html로 이동
-- ![스크린샷 2022-03-11 17.47.53](README.assets/스크린샷 2022-03-11 17.47.53.png)
+
+  <div align="center">
+    <img src="README.assets/4.png" alt="main" width="800px"/>
+  </div>
+
+  ---
+
+  ## ⭐️ 기능
+
+  - TMDB로부터 데이터를 받아올 수 있기 때문에 새로운 데이터를 언제든 추가할 수 있습니다.
