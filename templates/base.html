@@ -19,13 +19,19 @@
   </head>
   <body>
     <header style="height: 50px">
-      <nav class="mx-5 mt-2">
+      <nav class="mx-5 mt-2 d-flex justify-content-between">
         <h2 class="fw-bolder">
           <a href="{% url 'movies:index'%}" class="text-decoration-none"
             >SSACHA</a
           >
         </h2>
+        <a
+          href="{% url 'movies:new' %}"
+          class="text-decoration-none text-dark fw-bolder lh-base pt-2"
+          >영화 등록하기</a
+        >
       </nav>
+
       <hr class="mt-0 mb-0" />
     </header>
 
