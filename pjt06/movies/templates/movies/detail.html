@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+<section class="mx-auto my-5 position-relative">
+  <article class="card mx-auto my-5 position-relative" style="width: 25rem">
+    <img
+      src="{{ movie.poster_url }} "
+      class="card-img-top"
+      alt="{{ movie.title}} poster"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ movie.title }}</h5>
+      <dl class="row">
+        <dt class="col-sm-3">Audience</dt>
+        <dd class="col-sm-9">{{ movie.audience }}</dd>
+        <dt class="col-sm-3">Genre</dt>
+        <dd class="col-sm-9">{{ movie.genre }}</dd>
+        <dt class="col-sm-3">Release Date</dt>
+        <dd class="col-sm-9">{{ movie.release_date|date:"m, D, Y" }}</dd>
+        <dt class="col-sm-3">Score</dt>
+        <dd class="col-sm-9">{{ movie.score }}</dd>
+        <p class="card-text">{{ movie.description }}</p>
+      </dl>
+      <div class="d-flex">
+        <a href="{% url 'movies:update' movie.pk %}" class="btn btn-info me-2"
+          >UPDATE</a
+        >
+        <form action="{% url 'movies:delete' movie.pk %}" method="POST">
+          {% csrf_token %}
+          <button class="btn btn-danger">DELETE</button>
+        </form>
+      </div>
+    </div>
+  </article>
+  <div>
+    <a
+      href="{% url 'movies:index' %} "
+      class="btn btn-warning position-absolute"
+      style="bottom: 0"
+      >BACK</a
+    >
+  </div>
+</section>
+{% endblock content %}
