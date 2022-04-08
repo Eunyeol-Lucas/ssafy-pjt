@@ -1,11 +1,9 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h1>INDEX</h1>
-<a href="#">CREATE</a>
+<a href="{% url 'movies:create' %}">CREATE</a>
 <hr />
 {% for movie in movie_list %}
-
-{% endfor %}
-
-
-{% endblock content %}
+<p><a href="">{{ movie.title }}</a></p>
+<p>{{ movie.score }}</p>
+<hr />
+{% endfor %} {% endblock content %}
