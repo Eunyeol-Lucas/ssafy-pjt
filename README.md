@@ -215,7 +215,7 @@ https://beomi.github.io/gb-crawling/posts/2017-03-01-HowToMakeWebCrawler-Save-wi
 
 ## 🌏 완성된 페이지
 
-### 1. 전체 영화 목록 조히 템플릿 (index.html)
+### 1. 전체 영화 목록 조회 템플릿 (index.html)
 
 - 데이터 베이스에 존재하는 모든 영화 목록을 표시
 
