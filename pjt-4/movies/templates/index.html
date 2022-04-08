@@ -1,0 +1,122 @@
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'style.css' %}" />
+{% endblock style %} {% block navbar %}
+<section
+  class="position-relative d-flex flex-column align-items-center pt-5 mb-5"
+  id="top"
+>
+  <figure class="mt-5 image-container">
+    <img class="main-image" src="{% static "main.jpeg" %}" alt="main image" >
+    <figcaption class="fig-sentence">
+      당신에게 어울리는 영화를 추천해드립니다.
+    </figcaption>
+  </figure>
+
+  <h1>영화 목록</h1>
+  <div class="container mb-5">
+    <div class="row justify-content-center g-20">
+      {% for data in movie_list %}
+      <div
+        class="modal fade"
+        id="{{ data.id }}"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="{{ data.title }}"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="{{ data.title }}">
+                {{ data.title }}
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div
+              id="{{ data.id }}Label"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="{{ data.poster }}"
+                    class="d-block w-100"
+                    alt="{{ data.title }} poster"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="{% static 'sample-img.png' %}"
+                    class="d-block w-100"
+                    alt="sample poster"
+                  />
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#{{ data.id }}Label"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleControls"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <article class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card">
+          <img
+            src="{{ data.poster }}"
+            class="card-img-top"
+            alt="{{ data.title }} poster"
+            data-bs-toggle="modal"
+            data-bs-target="#{{ data.id }}"
+            height="350"
+            style="cursor: pointer"
+            loadiing="lazy"
+          />
+          <div class="card-body">
+            <h3 style="height: 60px">{{ data.title }}</h3>
+            <p class="card-text overview">{{ data.overview }}</p>
+            <p>개봉일: {{ data.release_date }}</p>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock navbar %}

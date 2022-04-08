@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'style.css' %}" />
+{% endblock style %} {% block navbar %}
+<div class="position-relative mt-5 d-flex flex-column align-items-center">
+  <h1 class="mt-5">쇼생크 탈출과 비슷한 영화 추천받기</h1>
+
+  {% if movie %}
+  <div class="card-box">
+    <figure class="img-container">
+      <img
+        class="image"
+        src="{{ movie.poster }}"
+        alt="{{ movie.title}} poster"
+      />
+    </figure>
+    <div class="info">
+      <div class="title">
+        <h4 class="card-title movie-title">{{ movie.title }}</h3>
+        <p class="vote-container">{{ movie.vote }}</p>
+      </div>
+      <hr />
+      <p class="card-text">{{ movie.overview }}</p>
+      <hr />
+      <p>개봉일: {{ movie.release_date }}</p>
+      <a
+        href="{{ movie.site }}"
+        class="btn btn-primary mt-2"
+        target="_blank"
+        style="width: 100%"
+        >상세정보</a
+      >
+    </div>
+  </div>
+
+  </div>
+  {% endif %}
+</div>
+{% endblock navbar %}
