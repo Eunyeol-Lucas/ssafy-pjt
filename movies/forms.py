@@ -1,6 +1,3 @@
-from platform import release
-from tkinter import Widget
-from turtle import width
 from django import forms
 from .models import Movie
 
@@ -37,7 +34,7 @@ class MovieForm(forms.ModelForm):
         )
     )
     release_date = forms.DateTimeField(
-        label="Release_date",
+        label="Release date",
         widget=forms.DateInput(
             attrs={
                 'type':'date',
