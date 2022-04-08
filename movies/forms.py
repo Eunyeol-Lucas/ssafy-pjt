@@ -5,10 +5,14 @@ from django import forms
 from .models import Movie
 
 class MovieForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = "" 
     GENRE_A = '코미디'
     GENRE_B = '공포'
     GENRE_C = '로맨스'
     GENRE_CHOICES = [
+        ("", 'Please Choose the Genre'),
         (GENRE_A, '코미디'),
         (GENRE_B, '공포'),
         (GENRE_C, '로맨스'),
@@ -46,7 +50,7 @@ class MovieForm(forms.ModelForm):
         choices=GENRE_CHOICES,
         widget=forms.Select(
             attrs={
-                "class":"form-control" 
+                "class":"form-select",
             }
         )
     )
