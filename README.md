@@ -132,6 +132,15 @@ https://beomi.github.io/gb-crawling/posts/2017-03-01-HowToMakeWebCrawler-Save-wi
           (GENRE_B, '공포'),
           (GENRE_C, '로맨스'),
       ]
+      genre = forms.ChoiceField(
+          label="Genre",
+          choices=GENRE_CHOICES,
+          widget=forms.Select(
+              attrs={
+                  "class":"form-select",
+              }
+          )
+      )
   ```
 
   
@@ -202,5 +211,68 @@ https://beomi.github.io/gb-crawling/posts/2017-03-01-HowToMakeWebCrawler-Save-wi
           movie.save()
   ```
 
-  
+----
+
+## 🌏 완성된 페이지
+
+### 1. 전체 영화 목록 조히 템플릿 (index.html)
+
+- 데이터 베이스에 존재하는 모든 영화 목록을 표시
+
+- 해당 영화 제목을 누를 경우 해당 영화의 상세 페이지로 이동
+
+- [CREATE] 버튼을 누를 경우, 새로운 영화를 등록할 수 있다.
+
+- require_safe 메서드를 통해, get 또는 HEAD method만 허용하도록 요구
+
+  ```python
+  @require_safe
+  def index(request):
+      movie_list = Movie.objects.order_by('-pk')
+      context = {
+          'movie_list': movie_list,
+      }
+      return render(request, 'movies/index.html', context)
+  ```
+
+<img src="README.assets/스크린샷 2022-04-08 16.27.56.png" alt="스크린샷 2022-04-08 16.27.56" style="zoom:80%;" />
+
+### 2. 새 영화 등록 페이지(create.html)
+
+- 메인 페이지에서 [CREATE] 버튼을 누를 경우 /movies/create/ 페이지로 이동
+
+- require_http_methods(['GET', 'POST']) 메서드를 통해 GET 또는 POST 메서드만 접근 허용
+
+  ```python
+  @require_http_methods(['GET', 'POST'])
+  def create(request):
+      if request.method == "POST":
+          form = MovieForm(request.POST)
+          if form.is_valid():
+              form.save()
+              return redirect('movies:index')
+      else:
+          form = MovieForm()
+      context = {
+          'form' : form
+      }
+      return render(request, 'movies/create.html', context)
+  ```
+
+  <img src="README.assets/스크린샷 2022-04-08 16.26.40.png" alt="스크린샷 2022-04-08 16.26.40" style="zoom:80%;" />
+
+### 3. 영화 상세 페이지 (detail.html)
+
+- 메인 페이지에서 영화 제목을 클릭할 경우 이동하는 페이지
+- UPDATE 버튼을 누를 경우, 수정을 위한 /movies/\<int:pk\>/update 페이지로 이동
+- DELETE 버튼을 누를 경우, 해당 영화 정보를 삭제하기 위한 POST 요청
+- BACK 버튼을 누를 경우, 메인 페이지로 이동
+
+<img src="README.assets/스크린샷 2022-04-08 16.29.02.png" alt="스크린샷 2022-04-08 16.29.02" style="zoom:80%;" />
+
+### 4. 수정 페이지 (update.html)
+
+
+
+- 상세
 
