@@ -235,7 +235,7 @@ https://beomi.github.io/gb-crawling/posts/2017-03-01-HowToMakeWebCrawler-Save-wi
       return render(request, 'movies/index.html', context)
   ```
 
-<img src="README.assets/스크린샷 2022-04-08 16.27.56.png" alt="스크린샷 2022-04-08 16.27.56" style="zoom:80%;" />
+<img src="README.assets/1.png" alt="메인페이지" style="zoom:80%;" />
 
 ### 2. 새 영화 등록 페이지(create.html)
 
@@ -259,7 +259,7 @@ https://beomi.github.io/gb-crawling/posts/2017-03-01-HowToMakeWebCrawler-Save-wi
       return render(request, 'movies/create.html', context)
   ```
 
-  <img src="README.assets/스크린샷 2022-04-08 16.26.40.png" alt="스크린샷 2022-04-08 16.26.40" style="zoom:80%;" />
+  <img src="README.assets/2.png" alt="영화등록페이지" style="zoom:80%;" />
 
 ### 3. 영화 상세 페이지 (detail.html)
 
@@ -268,12 +268,12 @@ https://beomi.github.io/gb-crawling/posts/2017-03-01-HowToMakeWebCrawler-Save-wi
 - DELETE 버튼을 누를 경우, 해당 영화 정보를 삭제하기 위한 POST 요청
 - BACK 버튼을 누를 경우, 메인 페이지로 이동
 
-<img src="README.assets/스크린샷 2022-04-08 16.29.02.png" alt="스크린샷 2022-04-08 16.29.02" style="zoom:80%;" />
+<img src="README.assets/3.png" alt="상세 페이지" style="zoom:80%;" />
 
 ### 4. 수정 페이지 (update.html)
 
 - 기존의 저장된 영화 데이터를 불러와 form 내에 렌더링
 - 원하는 항목의 데이터를 수정할 수 있다.
 
-<img src="README.assets/스크린샷 2022-04-08 16.32.53.png" alt="스크린샷 2022-04-08 16.32.53" style="zoom:80%;" />
+<img src="README.assets/4.png" alt="수정 페이지" style="zoom:80%;" />
 
