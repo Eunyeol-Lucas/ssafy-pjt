@@ -272,7 +272,8 @@ https://beomi.github.io/gb-crawling/posts/2017-03-01-HowToMakeWebCrawler-Save-wi
 
 ### 4. 수정 페이지 (update.html)
 
+- 기존의 저장된 영화 데이터를 불러와 form 내에 렌더링
+- 원하는 항목의 데이터를 수정할 수 있다.
 
-
-- 상세
+<img src="README.assets/스크린샷 2022-04-08 16.32.53.png" alt="스크린샷 2022-04-08 16.32.53" style="zoom:80%;" />
 
