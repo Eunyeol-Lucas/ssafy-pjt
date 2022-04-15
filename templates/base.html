@@ -17,6 +17,16 @@
     <div class="container">
       <a href="{% url 'accounts:login' %}">LOGIN</a>
       <a href="{% url 'accounts:signup' %}">SIGNUP</a>
+      <a href="{% url 'accounts:update' %}">UPDATE</a>
+      <form action="{% url 'accounts:logout' %}" method="POST">
+        {% csrf_token %}
+        <button>logout</button>
+      </form>
+      <form action="{% url 'accounts:delete' %}" method="POST">
+        {% csrf_token %}
+        <button>delete</button>
+      </form>
+      
       <hr>
       {% block content %} {% endblock content %}
     </div>

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>회원수정</h1>
+<form action="" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button>submit</button>
+</form>
+<a href="{% url 'movies:index' %}">back</a>
+{% endblock content %}
