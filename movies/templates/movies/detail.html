@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<h1>DETAIL</h1>
+<p>{{movie.title}}</p>
+<p>{{movie.description}}</p>
+<p>{{movie.created_at}}</p>
+<p>{{movie.updated_at}}</p>
+{% if user == movie.user_id %}
+<a href="{% url 'movies:update' pk=movie.pk %} ">UPDATE</a>
+{% endif %} {% comment %}
+<form action="{% url 'movie:delete' pk=pk %} " method="POST">
+  {% csrf_token %}
+  <button>DELETE</button>
+</form>
+{% endcomment %}
+<a href="{% url 'movies:index' %}">BACK</a>
+<hr />
+{{ comment_form.as_p }} {% for comment in comments %}
+<p>comment</p>
+<form action="" method="POST">
+  {% csrf_token %}
+  <button>DELETE</button>
+</form>
+{% endfor %} {% endblock content %}
