@@ -6,6 +6,6 @@
 
 
 
-## 📌 <a href="./REAMDE-강경은.md">강경은 README.md</a> 바로가기 👈
+## 📌 <a href="https://lab.ssafy.com/ney9083/pjt07/-/blob/master/README-%EA%B0%95%EA%B2%BD%EC%9D%80.md">강경은 README.md 🔗</a> 바로가기 👈
 
-## 📌 남은열 README.md 바로가기 👈
+## 📌 <a href="https://lab.ssafy.com/ney9083/pjt07/-/blob/master/README-%EB%82%A8%EC%9D%80%EC%97%B4.md">남은열 README.md 🔗</a> 바로가기 👈
