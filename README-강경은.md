@@ -1,303 +1,83 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,django,venv
+## 강경은_구현 내용
 
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,django,venv
+```
+단계별로 구현 과정 중 학습한 내용, 어려웠던 부분,
+새로 배운 것들 및 느낀 점 등을 상세히 기록하여 제출해야 합니다
+```
 
-### Django
+```
+@login_required
+@require_http_methods(['GET','POST'])
+def update(request):
+    if request.method == "POST":
+        form = CustomUserChangeForm(request.POST,instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('movies:index')
+    else:
+        form = CustomUserChangeForm(instance=request.user)
 
-_.log
-_.pot
-\*.pyc
-**pycache**/
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-media
+    context ={
+        'form':form,
+    }
+    return render(request,'accounts/update.html',context)
 
-# If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
+```
 
-# in your Git repository. Update and uncomment the following line accordingly.
+decorators를 통해 로그인이 된 상태여야만 update기능을 사용할 수 있도록 구현하고,
 
-# <django-project-name>/staticfiles/
+커스텀 모델을 통해 변수를 정의하고 유효성 검사 및 render와 redirect를 구현하였다.
 
-### Django.Python Stack
 
-# Byte-compiled / optimized / DLL files
 
-_.py[cod]
-_$py.class
+```
+#forms.py
+class CustomUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = get_user_model()
+        fields = UserCreationForm.Meta.fields + ('email',)
 
-# C extensions
+class CustomUserChangeForm(UserChangeForm):
+    class Meta:
+        model = get_user_model()
+        fields = ('email','first_name','last_name',)
 
-\*.so
+```
 
-# Distribution / packaging
+from django.contrib.auth.forms 로 UserCreationForm과 UserChangeForm의 기능을 불러와
 
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-_.egg-info/
-.installed.cfg
-_.egg
-MANIFEST
+이를 통해 커스텀 모델을 구현하였다. 이를 위해서는 django.contrib.auth로 불러온 get_user_model()
 
-# PyInstaller
+으로 model을 정의해주어야 했다.
 
-# Usually these files are written by a python script from a template
 
-# before PyInstaller builds the exe, so as to inject date/other infos into it.
 
-_.manifest
-_.spec
+최종적으로 accounts의 기능은 전부 구현하였고, movies의 기능은 시간관계상 update의 기능까지
 
-# Installer logs
+구현이 완료되었다.
 
-pip-log.txt
-pip-delete-this-directory.txt
 
-# Unit test / coverage reports
 
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage._
-.cache
-nosetests.xml
-coverage.xml
-_.cover
-\*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
+### 강경은_어려웠던 부분
 
-# Translations
+```
+개인적으로는 커스텀 모델을 정의하고 활용하는 부분이 가장 어려웠다.
+어느 모델에서는 어느 부분을 상속받고 이후 views.py에서 이를 활용하는 것에서 난관을 겪었다.
+또한 from django에서 특정 경로를 찾아 거기에서 update_session_auth_hash나 
+require_http_methods등의 기능들을 뽑아내는 것이 큰 어려움이었다.
+```
 
-\*.mo
 
-# Django stuff:
 
-# Flask stuff:
+### 강경은_느낀 점
 
-instance/
-.webassets-cache
+```
+첫 페어 프로그래밍이어서 굉장히 긴장이 되었다.
+내가 발목을 잡지는 않을까 고민이 되어 혼자 진행할 사람은 미리 말을 하라고 하셨을 때 말할까
+말까 굉장히 고민을 많이 했으나, 결국 피하기만 해서는 앞으로의 직정에서도 어려움이 많을 것이라
+는 생각에 페어 프로그래밍을 진행하게 되었다.
+같은 페어가 된 남은열 조원은 무척 활기차고 코딩 수준이 뛰어나, 옆에 있던 나까지 즐거워지는
+활력이 느껴졌다. 덕분에 나도 몇 시간 동안 즐겁게 대화하며 코딩을 진행할 수 있어서 무척
+고마웠다.
+```
 
-# Scrapy stuff:
-
-.scrapy
-
-# Sphinx documentation
-
-docs/\_build/
-
-# PyBuilder
-
-.pybuilder/
-target/
-
-# Jupyter Notebook
-
-.ipynb_checkpoints
-
-# IPython
-
-profile_default/
-ipython_config.py
-
-# pyenv
-
-# For a library or package, you might want to ignore these files since the code is
-
-# intended to run in multiple environments; otherwise, check them in:
-
-# .python-version
-
-# pipenv
-
-# According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-
-# However, in case of collaboration, if having platform-specific dependencies or dependencies
-
-# having no cross-platform support, pipenv may install dependencies that don't work, or not
-
-# install all needed dependencies.
-
-#Pipfile.lock
-
-# poetry
-
-# Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-
-# This is especially recommended for binary packages to ensure reproducibility, and is more
-
-# commonly ignored for libraries.
-
-# https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-
-#poetry.lock
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-
-**pypackages**/
-
-# Celery stuff
-
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-
-\*.sage.py
-
-# Environments
-
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-
-.spyderproject
-.spyproject
-
-# Rope project settings
-
-.ropeproject
-
-# mkdocs documentation
-
-/site
-
-# mypy
-
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-
-.pyre/
-
-# pytype static type analyzer
-
-.pytype/
-
-# Cython debug symbols
-
-cython_debug/
-
-# PyCharm
-
-# JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-
-# be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-
-# and can be added to the global gitignore or merged into this file. For a more nuclear
-
-# option (not recommended) you can uncomment the following to ignore the entire idea folder.
-
-#.idea/
-
-### macOS
-
-# General
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Icon must end with two \r
-
-Icon
-
-# Thumbnails
-
-.\_\*
-
-# Files that might appear in the root of a volume
-
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
-
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-### macOS Patch
-
-# iCloud generated files
-
-\*.icloud
-
-### venv
-
-# Virtualenv
-
-# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
-
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
-pyvenv.cfg
-pip-selfcheck.json
-
-### Windows
-
-# Windows thumbnail cache files
-
-Thumbs.db
-Thumbs.db:encryptable
-ehthumbs.db
-ehthumbs_vista.db
-
-# Dump file
-
-\*.stackdump
-
-# Folder config file
-
-[Dd]esktop.ini
-
-# Recycle Bin used on file shares
-
-$RECYCLE.BIN/
-
-# Windows Installer files
-
-_.cab
-_.msi
-_.msix
-_.msm
-\*.msp
-
-# Windows shortcuts
-
-\*.lnk
-
-# End of https://www.toptal.com/developers/gitignore/api/macos,windows,django,venv
