@@ -1,15 +1,16 @@
 <template>
   <div>
-    <WatchItem />
+    <MovieCard />
   </div>
 </template>
 
 <script>
-import WatchItem from "./WatchItem.vue";
+
+import MovieCard from "./MovieCard.vue";
 export default {
   name: "WatchList",
   components: {
-    WatchItem,
+    MovieCard,
   },
 };
 </script>

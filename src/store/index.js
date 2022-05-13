@@ -18,8 +18,8 @@ export default new Vuex.Store({
       state.watchedMovieList = [...state.watchedMovieList, movie];
     },
     setSearchedMovieList(state, searchedMovieList) {
-      console.log(searchedMovieList);
       state.searchedMovieList = searchedMovieList;
+      console.log(state.searchedMovieList);
     },
   },
   actions: {
