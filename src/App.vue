@@ -24,12 +24,7 @@
   </div>
 </template>
 <script>
-export default {
-
-  mounted() {
-    console.log(process.env.VUE_APP_API_KEY);
-  },
-};
+export default {};
 </script>
 
 <style></style>
