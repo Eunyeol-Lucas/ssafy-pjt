@@ -93,6 +93,8 @@
 
   - 모든 영화의 이미지 크기, 비율을 고정하고 반응형웹에 맞춰 비율을 유지한체 이미지 크기가 변경됩니다.
 
+  - 영화의 dedcription을 display: -webkit-box 를 사용하여 카드 기준에서 네줄이상 넘어가면 ... 을 붙여 생략하도록 했습니다.
+
     ```html
       <div ... >
         <div class="poster-wrapper">
@@ -124,12 +126,22 @@
         width: 100%;
         height: 100%;
       }
+      .word {
+      font-weight: bolder;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+      word-wrap: break-word;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+    }
     </style>
     ```
 
 ### **Random 페이지**
 
-- 장르별 랜덤 영화 추천 기능
+- __장르별 랜덤 영화 추천 기능__
 
   - 버튼을 누르면 사용자가 선택한 장르에 맞는 영화 목록을 받아와 랜덤한 영화 한개를 보여줍니다.
 
