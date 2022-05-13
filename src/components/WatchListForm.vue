@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mx-auto">
     <form @submit.prevent="getMovieList">
       <label for="watch-list-input"></label>
       <input

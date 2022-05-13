@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="max-w-4xl mx-auto">
     <WatchListForm />
     <SearchedMovieList />
     <WatchList />

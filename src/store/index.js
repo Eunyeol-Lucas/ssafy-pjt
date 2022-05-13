@@ -4,10 +4,29 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
+const storage = {
+  fetchWatchedMovieList() {
+    let arr = [];
+    if (localStorage.getItem("watchedMovieList")) {
+      arr = JSON.parse(localStorage.getItem("watchedMovieList"));
+    }
+    return arr;
+  },
+  fetchWatchedMovieIdList() {
+    let arr = [];
+    if (localStorage.getItem("watchedMovieIdList")) {
+      arr = JSON.parse(localStorage.getItem("watchedMovieIdList"));
+    }
+    return arr;
+  },
+};
+
 export default new Vuex.Store({
   state: {
-    watchedMovieList: [],
+    watchedMovieList: storage.fetchWatchedMovieList(),
     searchedMovieList: [],
+    watchedMovieIdList: storage.fetchWatchedMovieIdList(),
+    isSearchedMovie: true,
   },
   getters: {},
   mutations: {
@@ -18,8 +37,33 @@ export default new Vuex.Store({
       state.watchedMovieList = [...state.watchedMovieList, movie];
     },
     setSearchedMovieList(state, searchedMovieList) {
-      state.searchedMovieList = searchedMovieList;
-      console.log(state.searchedMovieList);
+      const filteredMovieList = searchedMovieList.filter((movie) => {
+        return !state.watchedMovieIdList.includes(movie.id);
+      });
+      state.searchedMovieList = filteredMovieList;
+      state.isSearchedMovie = filteredMovieList.length !== 0;
+    },
+    resetSearchedMovieList(state) {
+      state.searchedMovieList = [];
+    },
+    setRemainedSearchedMovieList(state, index) {
+      if (index === undefined) return;
+      this.commit("addWatchedMovieList", state.searchedMovieList[index]);
+      state.searchedMovieList = state.searchedMovieList.filter(
+        (movie, idx) => idx !== index
+      );
+    },
+    addWatchedMovieList(state, movie) {
+      state.watchedMovieList = [...state.watchedMovieList, movie];
+      state.watchedMovieIdList = [...state.watchedMovieIdList, movie.id];
+      localStorage.setItem(
+        "watchedMovieList",
+        JSON.stringify(state.watchedMovieList)
+      );
+      localStorage.setItem(
+        "watchedMovieIdList",
+        JSON.stringify(state.watchedMovieIdList)
+      );
     },
   },
   actions: {
