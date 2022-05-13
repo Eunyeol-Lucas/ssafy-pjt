@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex flex-col justify-center">
+  <div class="flex flex-col justify-center">
 		<p class='text-6xl inline-flex justify-center'>HomeView</p>
 		<div class="grid grid-cols-4 gap-4 p-7">
 			<MovieCard
