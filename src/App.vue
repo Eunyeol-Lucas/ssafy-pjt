@@ -10,10 +10,9 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      API_KEY: "eba1de962633cb7eb4cb4be4665bf5ba",
-    };
+
+  mounted() {
+    console.log(process.env.VUE_APP_API_KEY);
   },
 };
 </script>
