@@ -1,16 +1,16 @@
 <template>
-  <div class="mx-auto">
-    <form @submit.prevent="getMovieList">
+  <div class="w-auto my-5 relative">
+    <form @submit.prevent="getMovieList" class="mx-auto w-full">
       <label for="watch-list-input"></label>
       <input
-        class="border-2 rounded-lg border-red-400 bg-red-500 w-96"
+        class="border-2 rounded-full h-11 bg-gray-100 w-full border-none focus:outline-none focus:bg-gray-200 transition px-10"
         type="text"
         id="watch-list-input"
         v-model="keyword"
       />
       <button
         type="button"
-        class="bg-blue-500 rounded-lg w-11 h-8"
+        class="bg-gray-400 w-16 h-11 absolute right-0.5 rounded-r-full"
         @click="getMovieList"
       >
         검색

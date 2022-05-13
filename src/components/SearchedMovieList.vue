@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-10">
     <h2 v-if="searchedMovieList.length">관련된 영화</h2>
     <p v-if="!isSearchedMovie">검색어와 관련된 영화가 없습니다.</p>
     <ul class="grid grid-cols-4 gap-3">
@@ -26,6 +26,9 @@ export default {
   },
   computed: {
     ...mapState(["searchedMovieList", "isSearchedMovie"]),
+  },
+  beforeDestroy() {
+    this.resetSearchedMovieList();
   },
 };
 </script>
