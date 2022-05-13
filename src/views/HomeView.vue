@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center">
+  <div class="container flex flex-col justify-center">
 		<p class='text-6xl inline-flex justify-center mt-7'>HomeView</p>
 		<div class="grid grid-cols-4 gap-4 m-7">
 			<MovieCard
@@ -37,7 +37,6 @@ export default {
 			}
 			const response = await axios.get(BASR_URL, { params })
 			this.movies = response.data.results
-			console.log(this.movies)
 		}
 	},
 	created() {

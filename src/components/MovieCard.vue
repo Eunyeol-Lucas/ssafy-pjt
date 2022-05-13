@@ -42,7 +42,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .poster-wrapper {
   position: relative;
   width: 100%;

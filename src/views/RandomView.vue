@@ -33,6 +33,7 @@
 			<MovieCard
 			v-if='show'
 			:movie="movie"
+			class="minw"
 			/>
 			<p v-else>보고싶은 장르를 선택하고 버튼을 눌러보세요<p/>
 		</div>
@@ -73,17 +74,6 @@ export default {
 			this.movie=result
 			this.show=true
 		},
-		async fetchGenres() {
-			const PATH = 'genre/movie/list'
-			const API_KEY = process.env.VUE_APP_API_KEY
-			const BASR_URL = process.env.VUE_APP_TMDB_BASE_URL + PATH
-			const params = {
-				api_key: API_KEY,
-				language: 'ko',
-			}
-			const response = await axios.get(BASR_URL, { params })
-			console.log(response)
-		},
 		getGenre(e) {
 			this.genre = e.target.value
 			console.log(this.genre)
@@ -93,4 +83,7 @@ export default {
 </script>
 
 <style>
+.minw {
+	min-width: 400px;
+}
 </style>

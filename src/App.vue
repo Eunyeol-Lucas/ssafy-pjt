@@ -20,7 +20,9 @@
 				</div>
 			</div>
 		</nav>
-    <router-view />
+		<div class="flex flex-row items-center justify-center w-full">
+			<router-view />
+		</div>
   </div>
 </template>
 <script>

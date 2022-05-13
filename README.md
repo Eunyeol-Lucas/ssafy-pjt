@@ -64,6 +64,99 @@
 
 ## 💪 기능
 
+### **Home 페이지**
+
+- **인기영화 디스플레이**
+
+  - TMDB API '/movie/popular' 로 요청을 보내어 현재 인기있는 데일리 영화 리스트를 받아옵니다.
+
+    ```jsx
+    methods: {
+        async fetchMovies() {
+          const PATH = 'movie/popular'
+          const API_KEY = process.env.VUE_APP_API_KEY
+          const BASR_URL = process.env.VUE_APP_TMDB_BASE_URL + PATH
+          const params = {
+            api_key: API_KEY,
+            language: 'ko',
+            region: 'KR'
+          }
+          const response = await axios.get(BASR_URL, { params })
+          this.movies = response.data.results
+        }
+      },
+    ```
+
+- **MovieCard**
+
+  - 영화 각각의 정보를 카드형태에 담아 보여지게 됩니다.
+
+  - 모든 영화의 이미지 크기, 비율을 고정하고 반응형웹에 맞춰 비율을 유지한체 이미지 크기가 변경됩니다.
+
+    ```html
+      <div ... >
+        <div class="poster-wrapper">
+          <img
+            class="poster"
+            :src="`${URL}${movie.poster_path}`"
+            alt="Poster Image"
+          />
+        </div>
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{{ movie.title }}</div>
+          <p class="text-gray-700 text-base word">
+            {{ movie.overview }}
+          </p>
+        </div>
+      </div>
+    <style>
+      .poster-wrapper {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 150%;
+        overflow: hidden;
+      }
+      .poster {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    ```
+
+### **Random 페이지**
+
+- 장르별 랜덤 영화 추천 기능
+
+  - 버튼을 누르면 사용자가 선택한 장르에 맞는 영화 목록을 받아와 랜덤한 영화 한개를 보여줍니다.
+
+    ```jsx
+    methods: {
+        async fetchMovies() {
+          const PATH = `discover/movie`
+          const API_KEY = process.env.VUE_APP_API_KEY
+          const BASR_URL = process.env.VUE_APP_TMDB_BASE_URL + PATH
+          const params = {
+            api_key: API_KEY,
+            language: 'ko',
+            with_genres: this.genre
+          }
+          const response = await axios.get(BASR_URL, { params })
+          console.log(response)
+          const result = _.sample(response.data.results)
+          this.movie=result
+          this.show=true
+        },
+        getGenre(e) {
+          this.genre = e.target.value
+          console.log(this.genre)
+        }
+      }
+    ```
+
 ### WatchList 페이지
 
 - **검색 기능**
@@ -127,7 +220,11 @@
 
 ### Home
 
+![2022-05-14_1](Project KingEY 70089696cf3340109946a833430eea1a/2022-05-14_1.png) 
+
 ### Random Page
+
+![2022-05-14_2](Project KingEY 70089696cf3340109946a833430eea1a/2022-05-14_2.png)
 
 ### WatchList Page
 
